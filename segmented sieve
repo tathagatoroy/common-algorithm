@@ -1,0 +1,74 @@
+ #include<iostream>
+#include<algorithm>
+#include<vector>
+#include<string>
+#include<math.h>
+using namespace std;
+
+
+void  segmentedsieve(  long int m, long int n)
+{
+
+int b[100000]={};
+int a[100000]={};
+  long int i=2;
+    while((i*i)<=n)
+    {
+        if(b[i]==0)
+            {
+            for(long int k=i*i;k<=n;k=k+i)
+                b[k]++;
+        }
+        i++;
+    }
+
+for(long int j=2;(j*j)<=(n);j++)
+    {
+        if(b[j]==0)
+      {
+
+
+            for( long int k=((m/j)*j);k<=n;k=k+j)
+            {
+                  if(k-m>=0)
+                  {
+                      if(k!=j)
+         {
+
+         a[k-m]++;
+
+         }
+                  }
+
+            }
+      }
+
+
+
+
+}
+
+for( long int r=0;r<(n-m+1);r++)
+{
+ if(a[r]==0)
+    cout<<r+m<<endl;
+}
+
+}
+
+
+int main()
+{
+  int t;
+  cin>>t;
+  while(t--)
+  {
+
+ long int n,m;
+cin>>m>>n;
+segmentedsieve(m,n);
+
+
+  }
+return 0;
+  }
